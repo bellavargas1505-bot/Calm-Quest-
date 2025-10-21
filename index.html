@@ -7,106 +7,129 @@
   <style>
     body {
       font-family: "Poppins", sans-serif;
-      background: linear-gradient(180deg, #c3e4df, #f6f9f8);
+      background: linear-gradient(135deg, #c3e5d1, #f3e7e9);
       color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
       margin: 0;
-      padding: 0;
       text-align: center;
     }
-
-    header {
-      background-color: #8ec3b0;
-      color: white;
-      padding: 20px;
-      border-radius: 0 0 25px 25px;
-      font-size: 1.5em;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    h1 {
+      font-size: 2.5em;
+      color: #336b49;
+      margin-bottom: 10px;
     }
-
+    p {
+      color: #444;
+      max-width: 500px;
+      font-size: 1.1em;
+    }
     textarea {
       width: 80%;
-      max-width: 500px;
+      max-width: 400px;
       height: 120px;
-      margin: 20px 0;
-      padding: 15px;
-      border-radius: 15px;
-      border: 1px solid #8ec3b0;
+      border-radius: 12px;
+      border: 1px solid #aaa;
+      padding: 12px;
       font-size: 1em;
+      margin-top: 15px;
       resize: none;
-      outline: none;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     }
-
     button {
-      background-color: #8ec3b0;
+      background-color: #69b48a;
       color: white;
       border: none;
-      padding: 12px 25px;
       border-radius: 25px;
-      font-size: 1em;
+      padding: 12px 28px;
+      font-size: 1.1em;
       cursor: pointer;
+      margin-top: 20px;
       transition: 0.3s;
     }
-
     button:hover {
-      background-color: #74b49b;
+      background-color: #4d966d;
     }
-
-    .response {
-      margin-top: 20px;
-      font-size: 1.1em;
-      background-color: #ffffffaa;
+    #response {
+      margin-top: 25px;
+      background: #fff;
       border-radius: 15px;
-      display: inline-block;
-      padding: 15px;
-      max-width: 80%;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      padding: 20px;
+      width: 80%;
+      max-width: 400px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      font-size: 1.1em;
+      color: #333;
+      line-height: 1.5;
     }
-
     footer {
-      margin-top: 40px;
-      font-size: 0.9em;
-      color: #555;
+      position: absolute;
+      bottom: 10px;
+      font-size: 0.85em;
+      color: #666;
     }
   </style>
 </head>
-
 <body>
-  <header>
-    🌸 Búsqueda de Calma 🌿  
-    <div style="font-size:0.7em;">Tu espacio seguro para expresar lo que sientes</div>
-  </header>
+  <h1>🌿 Búsqueda de Calma</h1>
+  <p>Tu espacio seguro para expresar lo que sientes. Escribe lo que pasa por tu mente y recibe un mensaje de apoyo 💬</p>
 
-  <main>
-    <p>Escribe aquí lo que sientes hoy 💬</p>
-    <textarea id="feeling" placeholder="Por ejemplo: Me siento triste y ansiosa..."></textarea><br />
-    <button onclick="buscarCalma()">Buscar calma 💜</button>
-    <div id="response" class="response"></div>
-  </main>
+  <textarea id="feeling" placeholder="Escribe aquí lo que sientes..."></textarea>
+  <br />
+  <button onclick="buscarCalma()">Buscar calma 💚</button>
 
-  <footer>Creado con amor y empatía 💚 por Emily</footer>
+  <div id="response"></div>
+
+  <footer>Creado con empatía y respeto 🌸</footer>
 
   <script>
-    const respuestas = [
-      "Respira profundo 🌬, a veces detenerse un momento ya es avanzar.",
-      "Recuerda: lo que sientes es válido 💜 y está bien no estar bien.",
-      "Eres más fuerte de lo que crees 🌻. Todo mejora con el tiempo.",
-      "Hablar de lo que sientes ya es un gran paso 💬✨",
-      "No estás sola, hay personas que te quieren y desean verte bien 🌷",
-      "Hoy es un buen día para cuidar de ti 🕊",
-      "Tómate un momento para respirar y agradecer lo que sí tienes 💚"
+    const respuestasEmpaticas = [
+      "Siento mucho que te sientas así 💜. A veces la vida puede sentirse muy pesada, y es normal que eso te duela. Tómate un momento para respirar profundo, beber agua, y recordar que pedir ayuda o hablar con alguien de confianza puede aliviar un poco ese peso. No estás sola 🌿.",
+      "Lo que estás sintiendo es válido 🌸. No tienes que ocultarlo ni forzarte a estar bien. A veces solo necesitamos permitirnos sentir, y paso a paso volver a conectar con lo que nos da calma. Si puedes, haz algo pequeño por ti hoy: salir a caminar, escribir lo que te duele, o simplemente descansar 💚.",
+      "Gracias por compartir lo que sientes 💬. A veces expresar el dolor ya es el primer paso para sanar. Recuerda que pedir apoyo profesional es una muestra de fortaleza, no de debilidad. Tú mereces sentirte en paz y poco a poco lo vas a lograr 🌷.",
+      "Sé que puede ser difícil seguir cuando todo parece nublado 💭. Intenta recordar que ningún sentimiento es eterno. Busca una pequeña cosa que te traiga alivio hoy — escuchar música suave, mirar el cielo, hablar con alguien que te escuche sin juzgar. Cada paso, por pequeño que sea, cuenta 🌤.",
+      "Te mando un abrazo virtual 🤍. Es normal sentirse cansado o sin motivos a veces. No necesitas tener todas las respuestas hoy, solo darte permiso para descansar y sanar. Tu vida tiene valor, y tu historia todavía está escribiéndose con esperanza 🌈.",
+      "Está bien no tener fuerzas todo el tiempo 💫. Tu cuerpo y tu mente están pidiendo una pausa, no un final. A veces cuidarte significa simplemente aceptar que hoy necesitas calma. Habla con alguien que te escuche — eso puede marcar la diferencia 🌻.",
+      "Eres una persona valiente por escribir lo que sientes 🌿. A veces, ponerlo en palabras ya es una forma de sanar. Si sientes que la tristeza se vuelve muy grande, busca ayuda profesional; mereces apoyo y acompañamiento. No estás sola 💜."
+    ];
+
+    const respuestasPositivas = [
+      "Qué bonito que compartas eso 🌞. Reconocer tus emociones y expresarlas es una señal de crecimiento.",
+      "Me alegra leer eso 💚. Sigue cuidando de ti y celebrando los pequeños logros, porque cuentan mucho.",
+      "Cada paso hacia el bienestar es importante 🌱. Agradece tus avances y date crédito por seguir adelante.",
+      "Qué bien que te sientas así 🌷. Continúa escuchándote y haciendo lo que te ayuda a estar en paz.",
+      "Tu energía positiva inspira 🌟. Sigue nutriendo tu mente y tu corazón con calma y gratitud."
     ];
 
     function buscarCalma() {
-      const texto = document.getElementById("feeling").value.trim();
+      const texto = document.getElementById("feeling").value.toLowerCase().trim();
       const respuestaDiv = document.getElementById("response");
-      
+
       if (texto === "") {
         respuestaDiv.innerHTML = "Por favor, escribe algo para que pueda ayudarte 🌿";
         return;
       }
 
-      // Escoge una respuesta aleatoria
-      const respuesta = respuestas[Math.floor(Math.random() * respuestas.length)];
+      const palabrasTristes = ["triste", "mal", "solo", "vacío", "llorar", "miedo", "ansiedad", "depresión", "morir", "motivos", "cansado"];
+      let tipo = "positivo";
+
+      for (let palabra of palabrasTristes) {
+        if (texto.includes(palabra)) {
+          tipo = "empatico";
+          break;
+        }
+      }
+
+      let respuesta;
+      if (tipo === "empatico") {
+        respuesta = respuestasEmpaticas[Math.floor(Math.random() * respuestasEmpaticas.length)];
+      } else {
+        respuesta = respuestasPositivas[Math.floor(Math.random() * respuestasPositivas.length)];
+      }
+
       respuestaDiv.innerHTML = respuesta;
     }
   </script>
