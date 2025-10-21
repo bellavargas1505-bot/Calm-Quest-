@@ -1,111 +1,159 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Búsqueda de Calma 🌿</title>
-<style>
-body{font-family:Poppins,sans-serif;background:linear-gradient(135deg,#d8f3dc,#fefae0);
-color:#333;display:flex;flex-direction:column;align-items:center;justify-content:center;
-min-height:100vh;margin:0;padding:20px;text-align:center}
-textarea{width:90%;max-width:450px;height:120px;border-radius:12px;border:1px solid #aaa;
-padding:12px;font-size:1em;margin-top:15px;resize:none;box-shadow:0 2px 8px rgba(0,0,0,.1)}
-button{background:#52b788;color:#fff;border:none;border-radius:25px;padding:12px 28px;
-font-size:1.1em;cursor:pointer;margin-top:20px;transition:.3s}
-button:hover{background:#40916c}
-#response{margin-top:25px;background:#fff;border-radius:15px;padding:20px;width:90%;
-max-width:480px;box-shadow:0 3px 10px rgba(0,0,0,.1);font-size:1.05em;line-height:1.6;
-text-align:justify;white-space:pre-line}
-footer{margin-top:40px;font-size:.85em;color:#666}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Búsqueda de Calma 🌿</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #cce3de, #fefae0);
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 { color: #2d6a4f; }
+    textarea {
+      width: 90%;
+      max-width: 450px;
+      height: 120px;
+      border-radius: 15px;
+      border: 1px solid #aaa;
+      padding: 12px;
+      font-size: 1em;
+      resize: none;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      margin-top: 10px;
+    }
+    button {
+      background: #40916c;
+      color: #fff;
+      border: none;
+      border-radius: 25px;
+      padding: 12px 25px;
+      font-size: 1.1em;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: 0.3s;
+    }
+    button:hover { background: #2d6a4f; }
+    #response {
+      margin-top: 25px;
+      background: #fff;
+      border-radius: 15px;
+      padding: 20px;
+      width: 90%;
+      max-width: 500px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      font-size: 1.05em;
+      line-height: 1.6;
+      text-align: justify;
+    }
+    footer {
+      margin-top: 40px;
+      font-size: 0.8em;
+      color: #555;
+    }
+  </style>
 </head>
 <body>
-<h1>🌿 Búsqueda de Calma</h1>
-<p>Tu espacio seguro para escribir y recibir palabras de apoyo 💚</p>
+  <h1>🌿 Búsqueda de Calma</h1>
+  <p>Tu espacio seguro para soltar lo que sientes y recibir acompañamiento con empatía 💜</p>
 
-<textarea id="feeling" placeholder="Cuéntame lo que sientes..."></textarea><br>
-<button onclick="buscarCalma()">Buscar calma 💬</button>
-<div id="response"></div>
+  <textarea id="feeling" placeholder="Escribe aquí lo que sientes..."></textarea>
+  <br>
+  <button onclick="buscarCalma()">Buscar calma 💬</button>
 
-<footer>Los creadores son: Bella Vargas, Emilia Espinosa, Yorman Tacuma y Santiago Galindo 💜</footer>
+  <div id="response"></div>
 
-<script>
-function elegir(lista){
-  return lista[Math.floor(Math.random()*lista.length)];
-}
+  <footer>
+    Creado con empatía por <b>Bella Vargas, Emilia Espinosa, Yorman Tacuma y Santiago Galindo</b>
+  </footer>
 
-function buscarCalma(){
-  const texto=document.getElementById("feeling").value.toLowerCase();
-  const caja=document.getElementById("response");
-  if(!texto){caja.innerHTML="Por favor, cuéntame lo que estás sintiendo 🌿";return;}
+  <script>
+    const respuestas = {
+      amor: [
+        "Entiendo lo mucho que duele cuando una relación termina. Respira, por favor. A veces soltar es una forma profunda de amarte a ti mismo. No te juzgues por extrañar, es parte del proceso de sanar.",
+        "Perder a alguien que amas no borra el cariño que diste. Pero recuerda: mereces amor sin dolor. Date el tiempo de sentir, pero también de reconstruirte poco a poco.",
+        "Cuando alguien se va, no se lleva tu valor. Lo que duele ahora se convertirá en fuerza. Cada lágrima que cae también riega tu crecimiento.",
+        "Extrañar es natural, pero no significa que debas volver al dolor. Usa ese amor para reconectar contigo, para amarte con la misma intensidad con la que diste.",
+        "No estás solo. A veces el amor termina, pero eso no significa que fracasaste. Significa que tu corazón es lo suficientemente valiente para sentir."
+      ],
+      tristeza: [
+        "Está bien sentirte triste. No huyas de lo que sientes, abrázalo. A veces llorar es una manera del alma de limpiar el dolor.",
+        "Hay días en los que cuesta sonreír, y está bien. No necesitas fingir fortaleza, solo permítete descansar y volver a intentarlo mañana.",
+        "Tu tristeza no te hace débil, te hace humano. Cada emoción tiene un propósito, incluso las que duelen.",
+        "En este momento, no necesitas resolverlo todo. Solo respira, permítete existir, y recuerda que cada día es una nueva oportunidad para volver a ti.",
+        "Aunque ahora sientas oscuridad, confía en que la luz regresará. No siempre se ve, pero siempre está esperándote."
+      ],
+      ansiedad: [
+        "Respira despacio. Inhala por cuatro segundos, exhala por seis. Tu cuerpo no está en peligro, aunque tu mente lo crea. Estás a salvo.",
+        "A veces la ansiedad te hace creer que todo va mal, pero en realidad estás haciendo lo mejor que puedes. No te exijas más de lo necesario.",
+        "No eres tu ansiedad. Es solo una parte de ti, y no define quién eres. Estás aprendiendo a manejarla, y eso ya es un logro enorme.",
+        "Toma un momento para sentir el suelo bajo tus pies. Estás aquí, ahora, y eso es suficiente. No tienes que correr contra tus pensamientos.",
+        "No tienes que ganarle a la ansiedad, solo aprender a acompañarla con paciencia. Poco a poco, irá soltando su fuerza sobre ti."
+      ],
+      familia: [
+        "Las discusiones familiares duelen más porque vienen de quienes amamos. Pero hablar desde la calma puede abrir puertas que la rabia cerró.",
+        "A veces es mejor tomar distancia un momento antes de responder. No todo se resuelve de inmediato, y eso está bien.",
+        "Tu familia puede herirte, pero eso no invalida tus sentimientos. Puedes amar y al mismo tiempo poner límites sanos.",
+        "No necesitas cargar con el peso de todos. Cuidarte también es cuidar tu entorno. Empieza por ti.",
+        "Recuerda: nadie tiene una familia perfecta. Lo importante es buscar el equilibrio y la paz que mereces."
+      ],
+      amigos: [
+        "Perder un amigo o discutir con uno puede doler tanto como una ruptura. Date permiso para sentir y, si es posible, dialogar cuando el corazón esté más tranquilo.",
+        "Las amistades verdaderas sobreviven incluso a los silencios. Si fue real, el tiempo ayudará a sanar lo que hoy duele.",
+        "A veces los caminos se separan, y eso no borra los buenos momentos. Aprende y sigue caminando con el corazón abierto.",
+        "Si sientes que un amigo te falló, recuerda que todos somos humanos. A veces perdonar no es volver, sino liberarse.",
+        "La amistad también se trata de elegir quién te da paz, no solo quién te acompaña. Cuida tu energía."
+      ],
+      desmotivacion: [
+        "No siempre tendrás energía, y no pasa nada. Lo importante no es avanzar rápido, sino seguir intentándolo.",
+        "No te castigues por sentirte sin ganas. Descansar también es parte del progreso.",
+        "A veces el sentido se esconde, pero eso no significa que desaparezca. Espera, no te rindas. La motivación volverá cuando menos lo esperes.",
+        "Cada pequeño paso que das, incluso los invisibles, cuentan. Eres más fuerte de lo que crees.",
+        "Tu valor no depende de lo productivo que seas. Eres suficiente, simplemente por existir."
+      ],
+      esperanza: [
+        "Incluso en los días más nublados, el sol sigue ahí. No lo ves, pero te sigue calentando desde lejos.",
+        "La esperanza no siempre grita, a veces susurra: 'aguanta un poco más'. Escucha esa voz suave dentro de ti.",
+        "Nunca subestimes tu capacidad de renacer. Has superado mucho más de lo que recuerdas.",
+        "Aunque no lo sientas ahora, hay personas que se alegran de que existas. Tu historia aún tiene capítulos hermosos por escribir.",
+        "La vida no siempre mejora de golpe, pero mejora. Sigue aquí, sigue creyendo, sigue respirando."
+      ]
+    };
 
-  let respuestas=[];
+    function buscarCalma() {
+      const texto = document.getElementById("feeling").value.toLowerCase();
+      const box = document.getElementById("response");
+      let categoria = "";
 
-  // Ruptura amorosa
-  if(texto.match(/ex|novio|novia|pareja|termin|ruptura/)){
-    respuestas=[
-      "Siento mucho que estés pasando por un proceso tan doloroso 💔. Extrañar a alguien que te lastimó puede confundirte, pero es natural: tu corazón aún está aprendiendo a soltar. No te castigues por sentir. Permítete recordar sin quedarte allí; el amor propio también se construye cuando decides cerrar un ciclo para sanar 🌷.",
-      "Es comprensible que todavía lo pienses. A veces la mente repite lo que no tuvo cierre, y eso duele. Pero recuerda que no todo lo que amas te hace bien. Date el permiso de llorar, de escribir, de perdonarte y mirar hacia adelante. Poco a poco volverás a sentir paz 💚.",
-      "Terminar una relación deja un vacío que parece enorme, pero también abre espacio para reencontrarte contigo. Hoy quizá solo veas el dolor, pero con el tiempo descubrirás la fuerza que hay detrás de cada despedida. No estás sola en esto 🌿."
-    ];
-  }
+      if (texto.includes("novio") || texto.includes("ex") || texto.includes("pareja") || texto.includes("amor")) {
+        categoria = "amor";
+      } else if (texto.includes("triste") || texto.includes("mal") || texto.includes("vacío") || texto.includes("llorar")) {
+        categoria = "tristeza";
+      } else if (texto.includes("ansiedad") || texto.includes("miedo") || texto.includes("estres")) {
+        categoria = "ansiedad";
+      } else if (texto.includes("familia") || texto.includes("mamá") || texto.includes("papá") || texto.includes("hermano")) {
+        categoria = "familia";
+      } else if (texto.includes("amigo") || texto.includes("amistad") || texto.includes("pelea")) {
+        categoria = "amigos";
+      } else if (texto.includes("sin ganas") || texto.includes("no puedo") || texto.includes("rendirme")) {
+        categoria = "desmotivacion";
+      } else {
+        categoria = "esperanza";
+      }
 
-  // Ansiedad o miedo
-  else if(texto.match(/ansied|miedo|angust|pánico|nervios/)){
-    respuestas=[
-      "Respira conmigo 🌬. Inhala lento, retén un segundo, y suelta despacio. La ansiedad es una voz que te pide calma, no castigo. No tienes que luchar contra ella, solo acompañarte con ternura. Busca algo que te ancle: tu respiración, un sonido, un olor. Estás aquí y estás a salvo 💚.",
-      "Sé que la ansiedad puede parecer más grande que tú, pero no lo es. En cada respiración hay una oportunidad de recuperar el control. Cuida tu cuerpo: come, descansa, camina. Cada acto pequeño es una forma de decirle a tu mente que el peligro ya pasó 🌿.",
-      "A veces el miedo no se va de inmediato, pero puedes aprender a observarlo sin dejar que te gobierne. No te juzgues por sentirlo; incluso en medio del caos puedes encontrar pequeños segundos de calma 🕊."
-    ];
-  }
-
-  // Tristeza o depresión
-  else if(texto.match(/triste|depres|vacío|sin ganas|no puedo|morir|sufr/)){
-    respuestas=[
-      "Lamento que te sientas así 💜. Cuando la tristeza te cubre, cuesta ver la salida, pero no olvides que el dolor no es eterno. Estás respirando, y eso ya es una forma de seguir. Busca un pequeño gesto que te sostenga hoy: una ducha caliente, una canción suave, un mensaje a alguien. No necesitas hacerlo todo, solo un paso 🌷.",
-      "No estás rota, estás cansada. La tristeza profunda no te define, solo está pidiendo que la mires sin miedo. Si el peso se vuelve demasiado, no te aísles: hablar con alguien puede ser un alivio inmenso. Eres valiosa, incluso en tus días más oscuros 🌙.",
-      "Es normal sentirse perdido a veces. No te obligues a estar bien, pero tampoco apagues del todo la esperanza. Hay ayuda, hay luz y hay personas que pueden acompañarte. No estás sola 💚."
-    ];
-  }
-
-  // Estrés o agotamiento
-  else if(texto.match(/estrés|estres|agot|cansad|presión|colaps/)){
-    respuestas=[
-      "Has estado haciendo más de lo que parece, y está bien detenerte 💫. Descansar no es rendirse; es cuidar de ti. Hoy permítete soltar las exigencias, cerrar los ojos y simplemente existir. Eres suficiente aunque no cumplas todas las metas.",
-      "Cuando todo se siente demasiado, recuerda: puedes ir más despacio. Nadie puede con todo siempre. El descanso también es parte del progreso 🌿.",
-      "Si tu cuerpo y tu mente piden pausa, escúchalos. No tienes que ganarte el derecho a descansar; lo mereces solo por ser tú 💚."
-    ];
-  }
-
-  // Culpa o arrepentimiento
-  else if(texto.match(/culpa|arrepent|error|equivo/)){
-    respuestas=[
-      "Todos cometemos errores; eso nos hace humanos. No te quedes atrapado en el juicio. Pregúntate qué puedes aprender de esto y sigue adelante con más compasión hacia ti 🌱.",
-      "Perdonarte no significa olvidar, sino dejar de castigarte por lo que ya no puedes cambiar. Eres más que tus errores 💚.",
-      "Si sientes culpa, mírala con ternura: detrás de ella hay una persona que quiere hacerlo mejor. Y eso ya es un signo de crecimiento 🌿."
-    ];
-  }
-
-  // Alegría o bienestar
-  else if(texto.match(/feliz|tranquil|mejor|agradecid|paz/)){
-    respuestas=[
-      "Qué hermoso leer eso 🌞. Cuida ese bienestar, aliméntalo con gratitud y pequeños gestos que te conecten contigo misma. Cada día en calma es una semilla que siembras para el futuro 💚.",
-      "Es maravilloso verte reconocer tu progreso. La tranquilidad también se celebra: no viene de ignorar el dolor, sino de haberlo comprendido. Sigue así 🌿.",
-      "Agradecer los días buenos te ayuda a sostenerte en los difíciles. Celebra tu luz sin miedo ✨."
-    ];
-  }
-
-  // Caso general
-  else{
-    respuestas=[
-      "Gracias por abrir tu corazón 🌸. No hay emociones pequeñas; todo lo que sientes merece ser escuchado. Date tiempo para entenderte y tratarte con suavidad.",
-      "A veces no sabemos exactamente qué sentimos, y está bien. Lo importante es permitirte sentir sin juicio. Poco a poco encontrarás claridad 🌿.",
-      "Tu sinceridad ya es un paso hacia la calma. No busques respuestas rápidas; respira, escribe, y confía en que este momento también pasará 💚."
-    ];
-  }
-
-  caja.innerHTML=elegir(respuestas);
-}
-</script>
+      const posibles = respuestas[categoria];
+      const mensaje = posibles[Math.floor(Math.random() * posibles.length)];
+      box.innerHTML = mensaje;
+    }
+  </script>
 </body>
 </html>
