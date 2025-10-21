@@ -7,19 +7,20 @@
   <style>
     body {
       font-family: "Poppins", sans-serif;
-      background: linear-gradient(135deg, #c3e5d1, #f3e7e9);
+      background: linear-gradient(135deg, #d8f3dc, #fefae0);
       color: #333;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 100vh;
+      min-height: 100vh;
       margin: 0;
       text-align: center;
+      padding: 20px;
     }
     h1 {
-      font-size: 2.5em;
-      color: #336b49;
+      font-size: 2.4em;
+      color: #2d6a4f;
       margin-bottom: 10px;
     }
     p {
@@ -28,8 +29,8 @@
       font-size: 1.1em;
     }
     textarea {
-      width: 80%;
-      max-width: 400px;
+      width: 90%;
+      max-width: 420px;
       height: 120px;
       border-radius: 12px;
       border: 1px solid #aaa;
@@ -40,7 +41,7 @@
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     }
     button {
-      background-color: #69b48a;
+      background-color: #52b788;
       color: white;
       border: none;
       border-radius: 25px;
@@ -51,23 +52,23 @@
       transition: 0.3s;
     }
     button:hover {
-      background-color: #4d966d;
+      background-color: #40916c;
     }
     #response {
       margin-top: 25px;
       background: #fff;
       border-radius: 15px;
       padding: 20px;
-      width: 80%;
-      max-width: 400px;
+      width: 90%;
+      max-width: 420px;
       box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
       font-size: 1.1em;
       color: #333;
       line-height: 1.5;
+      white-space: pre-line;
     }
     footer {
-      position: absolute;
-      bottom: 10px;
+      margin-top: 40px;
       font-size: 0.85em;
       color: #666;
     }
@@ -75,59 +76,48 @@
 </head>
 <body>
   <h1>🌿 Búsqueda de Calma</h1>
-  <p>Tu espacio seguro para expresar lo que sientes. Escribe lo que pasa por tu mente y recibe un mensaje de apoyo 💬</p>
+  <p>Tu espacio seguro para escribir y recibir palabras de apoyo 💚</p>
 
   <textarea id="feeling" placeholder="Escribe aquí lo que sientes..."></textarea>
   <br />
-  <button onclick="buscarCalma()">Buscar calma 💚</button>
+  <button onclick="buscarCalma()">Buscar calma 💬</button>
 
   <div id="response"></div>
 
-  <footer>Creado con empatía y respeto 🌸</footer>
+  <footer>Hecho con empatía y cuidado 🌸</footer>
 
   <script>
-    const respuestasEmpaticas = [
-      "Siento mucho que te sientas así 💜. A veces la vida puede sentirse muy pesada, y es normal que eso te duela. Tómate un momento para respirar profundo, beber agua, y recordar que pedir ayuda o hablar con alguien de confianza puede aliviar un poco ese peso. No estás sola 🌿.",
-      "Lo que estás sintiendo es válido 🌸. No tienes que ocultarlo ni forzarte a estar bien. A veces solo necesitamos permitirnos sentir, y paso a paso volver a conectar con lo que nos da calma. Si puedes, haz algo pequeño por ti hoy: salir a caminar, escribir lo que te duele, o simplemente descansar 💚.",
-      "Gracias por compartir lo que sientes 💬. A veces expresar el dolor ya es el primer paso para sanar. Recuerda que pedir apoyo profesional es una muestra de fortaleza, no de debilidad. Tú mereces sentirte en paz y poco a poco lo vas a lograr 🌷.",
-      "Sé que puede ser difícil seguir cuando todo parece nublado 💭. Intenta recordar que ningún sentimiento es eterno. Busca una pequeña cosa que te traiga alivio hoy — escuchar música suave, mirar el cielo, hablar con alguien que te escuche sin juzgar. Cada paso, por pequeño que sea, cuenta 🌤.",
-      "Te mando un abrazo virtual 🤍. Es normal sentirse cansado o sin motivos a veces. No necesitas tener todas las respuestas hoy, solo darte permiso para descansar y sanar. Tu vida tiene valor, y tu historia todavía está escribiéndose con esperanza 🌈.",
-      "Está bien no tener fuerzas todo el tiempo 💫. Tu cuerpo y tu mente están pidiendo una pausa, no un final. A veces cuidarte significa simplemente aceptar que hoy necesitas calma. Habla con alguien que te escuche — eso puede marcar la diferencia 🌻.",
-      "Eres una persona valiente por escribir lo que sientes 🌿. A veces, ponerlo en palabras ya es una forma de sanar. Si sientes que la tristeza se vuelve muy grande, busca ayuda profesional; mereces apoyo y acompañamiento. No estás sola 💜."
-    ];
-
-    const respuestasPositivas = [
-      "Qué bonito que compartas eso 🌞. Reconocer tus emociones y expresarlas es una señal de crecimiento.",
-      "Me alegra leer eso 💚. Sigue cuidando de ti y celebrando los pequeños logros, porque cuentan mucho.",
-      "Cada paso hacia el bienestar es importante 🌱. Agradece tus avances y date crédito por seguir adelante.",
-      "Qué bien que te sientas así 🌷. Continúa escuchándote y haciendo lo que te ayuda a estar en paz.",
-      "Tu energía positiva inspira 🌟. Sigue nutriendo tu mente y tu corazón con calma y gratitud."
-    ];
-
     function buscarCalma() {
       const texto = document.getElementById("feeling").value.toLowerCase().trim();
       const respuestaDiv = document.getElementById("response");
 
       if (texto === "") {
-        respuestaDiv.innerHTML = "Por favor, escribe algo para que pueda ayudarte 🌿";
+        respuestaDiv.innerHTML = "Por favor, escribe lo que sientes para que pueda acompañarte 🌿";
         return;
       }
 
-      const palabrasTristes = ["triste", "mal", "solo", "vacío", "llorar", "miedo", "ansiedad", "depresión", "morir", "motivos", "cansado"];
-      let tipo = "positivo";
+      let respuesta = "";
 
-      for (let palabra of palabrasTristes) {
-        if (texto.includes(palabra)) {
-          tipo = "empatico";
-          break;
-        }
-      }
-
-      let respuesta;
-      if (tipo === "empatico") {
-        respuesta = respuestasEmpaticas[Math.floor(Math.random() * respuestasEmpaticas.length)];
-      } else {
-        respuesta = respuestasPositivas[Math.floor(Math.random() * respuestasPositivas.length)];
+      // Detección de temas
+      if (texto.includes("novio") || texto.includes("pareja") || texto.includes("terminó")) {
+        respuesta = 
+          "Lamento mucho lo que estás viviendo 💔. Una ruptura puede sentirse como si el mundo se apagara por un momento, y es normal extrañar, llorar y no entender qué sigue. No te castigues por sentirte así. \n\nCon el tiempo, el dolor se calma, y empiezas a reencontrarte contigo misma. Aprovecha este momento para cuidar tu paz: escribe, descansa, y rodéate de personas que te hagan sentir acompañada 💜.";
+      } 
+      else if (texto.includes("ansiedad") || texto.includes("miedo") || texto.includes("pánico")) {
+        respuesta = 
+          "Respira profundo 🌬. La ansiedad puede sentirse como una ola que te sobrepasa, pero también puede calmarse si te enfocas en el presente. Intenta inhalar 4 segundos, retener 4 y exhalar 6. \n\nNo estás sola, y no hay nada 'mal' en ti por sentir eso. Si puedes, habla con alguien de confianza o un profesional — pedir ayuda es un acto de valentía 💚.";
+      } 
+      else if (texto.includes("depresión") || texto.includes("triste") || texto.includes("mal") || texto.includes("vacío")) {
+        respuesta = 
+          "Siento mucho que te sientas así 💜. Cuando la tristeza es profunda, parece que nada tiene sentido, pero eso no define tu valor ni tu futuro. \n\nIntenta cuidar lo más básico hoy: comer algo ligero, descansar, o simplemente dejar que tu cuerpo sienta sin juzgar. Y si puedes, busca ayuda profesional o cuéntale a alguien de confianza — no tienes que cargar con esto sola 🌿.";
+      } 
+      else if (texto.includes("feliz") || texto.includes("mejor") || texto.includes("bien") || texto.includes("agradecido")) {
+        respuesta = 
+          "Qué alegría leer eso 🌞. Me encanta que estés reconociendo tu bienestar. Agradece este momento, celébralo, y recuerda que puedes volver aquí siempre que necesites un poco de calma 💚.";
+      } 
+      else {
+        respuesta = 
+          "Gracias por abrirte y escribir lo que sientes 🌷. No hay emociones correctas o incorrectas, todas son válidas. \n\nPermítete sentir, descansar, y cuidar de ti sin exigencias. Si lo que estás pasando te supera, hablar con alguien puede ayudarte a ver nuevas formas de aliviar ese peso 💫.";
       }
 
       respuestaDiv.innerHTML = respuesta;
