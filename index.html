@@ -84,7 +84,7 @@
 
   <div id="response"></div>
 
-  <footer>Hecho con empatía y cuidado 🌸</footer>
+  <footer>Los creadores son: Bella Vargas, Emilia Espinosa, Yorman Tacuma y Santiago Galindo 💜</footer>
 
   <script>
     function buscarCalma() {
@@ -98,26 +98,30 @@
 
       let respuesta = "";
 
-      // Detección de temas
-      if (texto.includes("novio") || texto.includes("pareja") || texto.includes("terminó")) {
+      // 🌸 Detectar tipo de emoción o situación
+      if (texto.includes("novio") || texto.includes("pareja") || texto.includes("terminó") || texto.includes("ruptura")) {
         respuesta = 
-          "Lamento mucho lo que estás viviendo 💔. Una ruptura puede sentirse como si el mundo se apagara por un momento, y es normal extrañar, llorar y no entender qué sigue. No te castigues por sentirte así. \n\nCon el tiempo, el dolor se calma, y empiezas a reencontrarte contigo misma. Aprovecha este momento para cuidar tu paz: escribe, descansa, y rodéate de personas que te hagan sentir acompañada 💜.";
+          "Te entiendo 💔. Terminar una relación puede sentirse como perder una parte de ti, y es normal que te duela, que llores o que te sientas confundida. A veces el corazón necesita tiempo para sanar, y eso está bien. \n\nRespira profundo. Permítete sentir sin culpa, pero también recuerda que no todo lo que se va, te pertenece. Eres una persona valiosa, completa, y con mucho por vivir. Con el tiempo, esta herida será parte de tu fuerza 🌿.";
       } 
-      else if (texto.includes("ansiedad") || texto.includes("miedo") || texto.includes("pánico")) {
+      else if (texto.includes("ansiedad") || texto.includes("miedo") || texto.includes("pánico") || texto.includes("angustia")) {
         respuesta = 
-          "Respira profundo 🌬. La ansiedad puede sentirse como una ola que te sobrepasa, pero también puede calmarse si te enfocas en el presente. Intenta inhalar 4 segundos, retener 4 y exhalar 6. \n\nNo estás sola, y no hay nada 'mal' en ti por sentir eso. Si puedes, habla con alguien de confianza o un profesional — pedir ayuda es un acto de valentía 💚.";
+          "Respira conmigo 🌬. Inhala contando hasta 4… retén el aire un momento… y exhala lentamente hasta 6. La ansiedad no define quién eres, solo te está diciendo que tu mente necesita calma y tu cuerpo descanso. \n\nHaz algo que te conecte con el presente: siente tus manos, escucha tu respiración, mírate con compasión. No estás sola, y cada momento de calma que logres ya es una pequeña victoria 💚.";
       } 
-      else if (texto.includes("depresión") || texto.includes("triste") || texto.includes("mal") || texto.includes("vacío")) {
+      else if (texto.includes("depresión") || texto.includes("triste") || texto.includes("mal") || texto.includes("vacío") || texto.includes("sin ganas") || texto.includes("morir")) {
         respuesta = 
-          "Siento mucho que te sientas así 💜. Cuando la tristeza es profunda, parece que nada tiene sentido, pero eso no define tu valor ni tu futuro. \n\nIntenta cuidar lo más básico hoy: comer algo ligero, descansar, o simplemente dejar que tu cuerpo sienta sin juzgar. Y si puedes, busca ayuda profesional o cuéntale a alguien de confianza — no tienes que cargar con esto sola 🌿.";
+          "Lamento mucho que te sientas así 💜. Cuando la tristeza es tan profunda, puede parecer que nada tiene sentido, pero te prometo que tu vida sigue teniendo valor, incluso si ahora no lo ves. \n\nNo tienes que fingir estar bien. Permítete descansar, llorar si lo necesitas, y pedir ayuda si el peso es demasiado. A veces hablar con alguien —un amigo, un familiar, un profesional— puede abrir una pequeña ventana de luz. Tú mereces estar en paz 🌷.";
       } 
-      else if (texto.includes("feliz") || texto.includes("mejor") || texto.includes("bien") || texto.includes("agradecido")) {
+      else if (texto.includes("estrés") || texto.includes("agotado") || texto.includes("cansado") || texto.includes("presión"))) {
         respuesta = 
-          "Qué alegría leer eso 🌞. Me encanta que estés reconociendo tu bienestar. Agradece este momento, celébralo, y recuerda que puedes volver aquí siempre que necesites un poco de calma 💚.";
+          "Has estado haciendo lo mejor que puedes, y eso ya es suficiente 🌿. Está bien detenerte, respirar y soltar por un momento todo lo que te agobia. No necesitas cargar con todo a la vez. \n\nRecuerda que cuidar de ti no es egoísmo, es una forma de seguir adelante con más fuerza. Descansa, come algo rico, o sal a caminar un poco — a veces el cuerpo necesita que lo escuches tanto como el corazón 💫.";
+      } 
+      else if (texto.includes("feliz") || texto.includes("mejor") || texto.includes("tranquilo") || texto.includes("agradecido")) {
+        respuesta = 
+          "Qué alegría leer eso 🌞. Es hermoso ver que estás encontrando momentos de calma y bienestar. Agradece este instante y celébralo, porque cada día de luz es una semilla que te fortalece. \n\nSigue cuidando de ti, rodeándote de personas que te aporten paz y haciendo lo que te hace sentir viva 💚.";
       } 
       else {
         respuesta = 
-          "Gracias por abrirte y escribir lo que sientes 🌷. No hay emociones correctas o incorrectas, todas son válidas. \n\nPermítete sentir, descansar, y cuidar de ti sin exigencias. Si lo que estás pasando te supera, hablar con alguien puede ayudarte a ver nuevas formas de aliviar ese peso 💫.";
+          "Gracias por abrirte y compartir lo que sientes 🌸. No hay emociones pequeñas, todo lo que expresas tiene valor. \n\nA veces no necesitamos respuestas, solo un espacio para ser escuchados sin juicio. Respira, date permiso para descansar y recuerda: incluso los días grises pueden traer aprendizajes. Estás haciendo lo mejor que puedes 💫.";
       }
 
       respuestaDiv.innerHTML = respuesta;
